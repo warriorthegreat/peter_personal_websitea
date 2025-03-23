@@ -1,0 +1,76 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  overflow: hidden;
+}
+header{
+  display: flex;
+  background-color: black;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  /* 之所以要寫releative是因為header 到時候會隨著視窗大小變成直的，跑掉的位置不能影響到網頁內容？ */
+}
+.nav{
+  display: flex;
+  background-color: black;
+
+}
+.nav-text{
+  height: 74px;
+  width: 130px;
+  text-align: center;
+  align-content: center;
+  margin: 0;
+  transition: color 0.2s ease-in;
+  color: white;
+}
+.nav-text:hover {
+  background-color: gray;
+}
+.menuBtn{
+  position: relative;
+  text-align: center;
+  align-content: center;
+  /* 上面讓文字水平/垂直置中 */
+  font-size: 40px;
+  height: 74px;
+  width: 74px;
+  background-color: black;
+  display: none;
+  color: white;
+}
+#menu-control{
+  display: none;
+}
+
+@media screen and (max-width:768px){
+  .nav{
+    position: absolute;
+    flex-direction: column;
+    background-color: black;
+    align-items: center ;
+    justify-self: unset;
+    top: 74px;
+    width: 50%;
+    padding: 20px;
+    height: calc(100vh - 74px);
+    /* 如果這邊寫100%那螢幕不會被撐開，但如果寫100vh就會把畫面撐開到和螢幕一樣大，1vh是當前螢幕可見高度的1％ */
+    /* 這是說高度=100%減去header高度，就是選單的高度 */
+    padding: 20px;
+    right: -100%;
+    transition: right 0.8s ease-in-out;
+  }
+  .nav-text{
+    color: white;
+    padding: 24px 32px;
+    align-content: center;
+  }
+  .menuBtn{
+    display: block;
+  }
+  #menu-control:checked ~ .nav{
+    right: 0px;
+  }
+}
